@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
+}
+
+model User {
+  id       Int      @id @default(autoincrement())
+  email    String   @unique
+  dob      String
+  password String
+  role     Role     @default(STUDENT)
+  student  Student?
+  teacher  Teacher?
+}
+
+model Student {
+  student_id    String @id @unique @default(cuid())
+  student_name  String
+  college_name  String
+  current_year  String
+  gmail_id      String
+  parent_number String
+  address       String
+  user_id       Int    @unique
+  user          User   @relation(fields: [user_id], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  marks         Marks?
+  attendance    String @default("0%")
+}
+
+model Teacher {
+  id     Int  @id @default(autoincrement())
+  userId Int  @unique
+  user   User @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+}
+
+model Marks {
+  mark_id     String  @id @default(cuid())
+  total_marks String
+  subject1    String?  @default("0")
+  subject2    String?  @default("0")
+  subject3    String?  @default("0")
+  subject4    String?  @default("0")
+  subject5    String?  @default("0")
+  student_id  String   @unique
+  student     Student  @relation(fields: [student_id], references: [student_id], onDelete: Cascade)
+}
+
+model Attendance {
+  id        Int      @id @default(autoincrement())
+  date      DateTime @default(now())
+  studentId String
+  status    Status
+}
+
+enum Status {
+  PRESENT
+  ABSENT
+}
+
+enum Role {
+  STUDENT
+  TEACHER
+}

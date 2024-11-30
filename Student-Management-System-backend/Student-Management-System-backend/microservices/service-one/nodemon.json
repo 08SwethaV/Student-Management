@@ -1,0 +1,6 @@
+{
+  "watch":["src","prisma"],
+  "ext": ".ts,.yml,.yaml,.prisma",
+  "exec": "ts-node src/server.ts",
+  "legacy-watch": true
+}

@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    // Node.js 12 and above supports ES2019 fully
+    "target": "ES2019",
+
+    // Node.js uses CommonJS
+    "module": "CommonJS",
+
+    "strict": true,
+    "esModuleInterop": true,
+
+    // Node.js module resolution strategy
+    "moduleResolution": "node",
+
+    "outDir": "dist",
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+
+    // Global type definitions for Node.js
+    "types": ["node"],
+
+    // If you use decorators
+    "experimentalDecorators": true,
+
+    // If you use decorators with reflection
+    "emitDecoratorMetadata": true,
+
+    "sourceMap": true,
+    "inlineSources": true,
+
+    // Set `sourceRoot` to  "/" to strip the build path prefix
+    // from generated source code references.
+    // This improves issue grouping in Sentry.
+    // Set `sourceRoot` to  "/" to strip the build path prefix
+    // from generated source code references.
+    // This improves issue grouping in Sentry.
+    "sourceRoot": "/"
+  },
+  "include": ["src/**/*.ts", "prisma/client/prismaClient.ts"],
+  "exclude": ["node_modules", "dist"]
+}

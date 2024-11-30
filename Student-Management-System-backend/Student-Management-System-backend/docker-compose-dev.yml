@@ -1,0 +1,18 @@
+version: '3'
+services:
+  nginx:
+    ports:
+      - "3000:80"
+
+  service-one:
+    build: 
+      context: microservices\service-one
+      args:
+        - NODE_ENV=development
+    # volumes:
+    #   - localPath:/app
+    #   - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - PORT=8001
+    command: npm run dev

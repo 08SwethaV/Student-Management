@@ -1,0 +1,31 @@
+swagger: '2.0'
+info:
+  title: Name MicroService
+  version: 1.0.0
+  basePath: /api/v1/
+  contact:
+    email: venkatesangunaraj@gmail.com
+  servers:
+    - description: This is a Local server
+      url: http://localhost:8000
+  x-logo:
+    altText: Custom Label
+    url: https://example.com/path-to-your-logo.png
+
+paths:
+  #Name MicroService
+  /api/v1/name:
+    
+
+securityDefinitions:
+  BasicAuth:
+    type: basic
+security:
+  - BasicAuth: []
+
+tags:
+  - description: Endpoints related to MicroService
+    name: MicroService
+  
+schemes:
+  - 'https'
